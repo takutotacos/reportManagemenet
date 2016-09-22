@@ -1,0 +1,39 @@
+<h1>User Registration</h1>
+	<%= form_for(@user) do |f| %>
+	<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved</h2>
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div>
+		<%= f.label :username %>
+		<%= f.text_field :username %>
+	</div>
+	<div>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+	<div>
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+	</div>
+	<div>
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
+	</div>
+	<div>
+		<%= f.label :address %>
+		<%= f.text_field :address %>
+	</div>
+	<div>
+		<%= label :group, :id, "Group" %>
+		<%= select :group, :id, @groups.map{|g| [g.groupname, g.id]} %>
+	</div>
+	<%= f.submit "Register", data:{confirm: "Are you sure you want to submit the information?"} %>
+	<% end %>

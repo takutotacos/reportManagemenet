@@ -1,0 +1,14 @@
+<h1>Login</h1>
+<%= form_tag('/login', method: :post) do %>
+<p id="notice"><%= notice %></p>
+	<div>
+		<%= label_tag 'name' %>
+		<%= text_field_tag 'name', nil, class: 'loginbox-username' %>
+	</div>
+	<div>
+		<%= label_tag 'password' %>
+		<%= password_field 'password', nil, class: 'loginbox-password' %>
+	</div>
+	<%= submit_tag "Login", class: 'button button-green' %>
+	<%= link_to "Signup", controller: :users, action: :new %>
+<% end %>
